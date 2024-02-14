@@ -1,0 +1,137 @@
+// App.js
+import React, {} from 'react';
+import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import Sidebar from './components/Sidebar';
+import FitnessTracker from './components/FitnessTracker';
+import NutritionTracker from './components/NutritionTracker';
+import Profile from './components/Profile';
+import Footer from './components/Footer';
+import './App.css';
+
+function App() {
+  const [activeTab, setActiveTab] = useState('dashboard');
+
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  return (
+    <div className="App">
+      <Header />
+      <div className="content">
+        <Sidebar activeTab={activeTab} onTabChange={handleTabChange} />
+        <div className="main">
+          {activeTab === 'dashboard' && <Dashboard />}
+          {activeTab === 'fitness' && <FitnessTracker />}
+          {activeTab === 'nutrition' && <NutritionTracker />}
+          {activeTab === 'profile' && <Profile />}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+
+
+// Header.js
+import React from 'react';
+
+const Header = () => {
+  return (
+    <header>
+      <h1>Health & Fitness App</h1>
+    </header>
+  );
+}
+
+export default Header;
+
+// Dashboard.js
+import React from 'react';
+
+const Dashboard = () => {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+      {/* Dashboard content */}
+    </div>
+  );
+}
+
+export default Dashboard;
+
+// Sidebar.js
+import React from 'react';
+
+const Sidebar = ({ activeTab, onTabChange }) => {
+  return (
+    <div className="sidebar">
+      <ul>
+        <li className={activeTab === 'dashboard' ? 'active' : ''} onClick={() => onTabChange('dashboard')}>Dashboard</li>
+        <li className={activeTab === 'fitness' ? 'active' : ''} onClick={() => onTabChange('fitness')}>Fitness Tracker</li>
+        <li className={activeTab === 'nutrition' ? 'active' : ''} onClick={() => onTabChange('nutrition')}>Nutrition Tracker</li>
+        <li className={activeTab === 'profile' ? 'active' : ''} onClick={() => onTabChange('profile')}>Profile</li>
+      </ul>
+    </div>
+  );
+}
+
+export default Sidebar;
+
+// FitnessTracker.js
+import React from 'react';
+
+const FitnessTracker = () => {
+  return (
+    <div>
+      <h2>Fitness Tracker</h2>
+      {/* Fitness Tracker content */}
+    </div>
+  );
+}
+
+export default FitnessTracker;
+
+// NutritionTracker.js
+import React from 'react';
+
+const NutritionTracker = () => {
+  return (
+    <div>
+      <h2>Nutrition Tracker</h2>
+      {/* Nutrition Tracker content */}
+    </div>
+  );
+}
+
+export default NutritionTracker;
+
+// Profile.js
+import React from 'react';
+
+const Profile = () => {
+  return (
+    <div>
+      <h2>Profile</h2>
+      {/* Profile content */}
+    </div>
+  );
+}
+
+export default Profile;
+
+// Footer.js
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer>
+      {/* Footer content */}
+    </footer>
+  );
+}
+
+export default Footer;
